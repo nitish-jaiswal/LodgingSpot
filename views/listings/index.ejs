@@ -30,53 +30,112 @@
             display: flex;
             align-items: center;
         }
+        
+        #filters-container {
+            position: relative;
+        }
+
+        #filters-toggle {
+            display: none;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding: 5px 5px;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+        }
+
+        
+        @media (max-width: 768px) {
+            #filters {
+                display: none;
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            #filters.show {
+                display: flex;
+            }
+
+            #filters-toggle {
+                display: block;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .filter {
+                margin-right: 0.5rem;
+                margin-top: 0.5rem;
+                text-align: left;
+            }
+            .tax-toggle {
+                margin-right: 0.5rem;
+                margin-top: 0.5rem;
+
+                border: 1px solid black;
+                border-radius: 1rem;
+                height: 2.6rem;
+                padding: 0.5rem;
+                padding-bottom: 0.6rem;
+                display: inline-flex;
+                align-items: center;
+
+            }
+        }
     </style>
 
-    <div id="filters">
-        <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <p>Iconic Cities</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <p>Mountains</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <p>Amazing Pools</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <p>Farms</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-regular fa-snowflake"></i></div>
-            <p>Arctic</p>
-        </div>
-        <div class="filter">
-            <div><i class="fa-solid fa-igloo"></i></div>
-            <p>Domes</p>
-        </div>
-        <div class="tax-toggle">
-            <div class="form-check-reverse form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+    <div id="filters-container">
+        <button id="filters-toggle" onclick="toggleFilters()">
+            <i class="fa fa-sliders-h"></i> Filters
+        </button>
+        <div id="filters">
+            <div class="filter">
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain-city"></i></div>
+                <p>Iconic Cities</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain"></i></div>
+                <p>Mountains</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-brands fa-fort-awesome"></i></div>
+                <p>Castles</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <p>Amazing Pools</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-campground"></i></div>
+                <p>Camping</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-cow"></i></div>
+                <p>Farms</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-regular fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+            <div class="filter">
+                <div><i class="fa-solid fa-igloo"></i></div>
+                <p>Domes</p>
+            </div>
+            <div class="tax-toggle">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+                </div>
             </div>
         </div>
     </div>
@@ -112,4 +171,13 @@
                 }
             }
         });
+
+        function toggleFilters() {
+            var filters = document.getElementById("filters");
+            if (filters.classList.contains("show")) {
+                filters.classList.remove("show");
+            } else {
+                filters.classList.add("show");
+            }
+        }
     </script>
